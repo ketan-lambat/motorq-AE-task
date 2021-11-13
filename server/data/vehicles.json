@@ -1,0 +1,32 @@
+{
+  "Vin": "1ftxxxxxyt",
+  "LicencePlate": "MH31WS3794",
+  "Driver": "Ram",
+  "MMY": "2020, Audi, Q7",
+  "CustomerName": "Rahul",
+  "Office": "Pune",
+  "Status": {
+    "ignition": true,
+    "speed": 100,
+    "location": {
+      "lat": 12.9,
+      "lon": 77.5
+    }
+  }
+},
+{
+  "Vin": "2ftxxxxxyt",
+  "LicencePlate": "MH31DW3700",
+  "Driver": "Tony",
+  "MMY": "2019, Audi, A3",
+  "CustomerName": "Adam",
+  "Office": "Chennai",
+  "Status": {
+    "ignition": true,
+    "speed": 80,
+    "location": {
+      "lat": 12.9,
+      "lon": 77.5,
+    },
+  },
+},

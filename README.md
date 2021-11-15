@@ -18,6 +18,9 @@
 
 # API Example
 
+### API Documentation
+[https://app.swaggerhub.com/apis/ketan-lambat/motorq/1.0.0](https://app.swaggerhub.com/apis/ketan-lambat/motorq/1.0.0)
+
 ## `GET` `/api/vehicles`
 
 Request

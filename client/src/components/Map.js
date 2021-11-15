@@ -1,5 +1,5 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
 
 export const Map = () => {
@@ -12,13 +12,14 @@ export const Map = () => {
         .then((data) => setData(data));
       console.debug(data, vehicles);
     })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log(data);
 
   const ShowData = (props) => {
     if (props.data) {
-      let markers = new Array();
+      let markers = [];
       for (let i = 0; i < props.data.length; i++) {
         markers.push(
           <Marker
@@ -27,7 +28,7 @@ export const Map = () => {
               props.data[i].Status.location.lon,
             ]}
           >
-            <Popup>
+            <Tooltip>
               <div className="card" style={{ width: "16rem" }}>
                 <div className="card-body">
                   <div className="row">
@@ -68,7 +69,7 @@ export const Map = () => {
                   </div>
                 </div>
               </div>
-            </Popup>
+            </Tooltip>
           </Marker>
         );
       }

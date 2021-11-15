@@ -67,6 +67,7 @@ router.patch("/:id", async (req, res) => {
   }
   console.log(req.body);
   const vehicle = await Vehicle.findByIdAndUpdate(req.params.id, {
+    CustomerName: req.body.customerName,
     Driver: req.body.driver,
     Office: req.body.office,
     LicensePlate: req.body.licensePlate,

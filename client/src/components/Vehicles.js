@@ -121,6 +121,7 @@ export const Vehicle = (props) => {
         driver: driverI.value,
         licensePlate: lpI.value,
         office: officeI.value,
+        customerName: props.data.CustomerName,
       }),
     });
     const data = await response.json();

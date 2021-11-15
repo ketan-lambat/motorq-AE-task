@@ -1,0 +1,123 @@
+swagger: "2.0"
+info:
+  description: "Motorq: Vehicle Management Portal"
+  version: "1.0.0"
+  title: "Motorq"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:9000"
+basePath: /
+tags:
+- name: "vehicles"
+  description: "Everything about vehicles api"
+  externalDocs:
+    description: "GitHub Repo"
+    url: "https://github.com/ketan-lambat/motorq-AE-task"
+schemes:
+- "http"
+paths:
+  /api/vehicles:
+    get:
+      tags:
+      - "vehicles"
+      summary: "List all vehicles"
+      description: ""
+      operationId: "listVehicles"
+      parameters:
+        - name: "count"
+          in: query
+          type: integer
+          default: 500
+        - name: "vin"
+          in: query
+          type: string
+          default: nagAbcd132
+        - name: "driver"
+          in: query
+          type: string
+          default: Ketan
+        - name: "licensePlate"
+          in: query
+          type: string
+          default: MN2419HD31
+          
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Correct Update"
+          schema:
+            description: List of Vehicles
+            type: array
+            items:
+              $ref: '#/definitions/Vehicle'
+
+  /api/vehicles/{id}:
+    patch:
+      tags:
+      - "vehicles"
+      summary: "Update a Vehicle"
+      description: ""
+      operationId: "updateVehicle"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of vehicle that needs to be updated"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Pet object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Vehicle"
+      responses:
+        "200":
+          description: "Correct Update"
+          schema:
+            $ref: '#/definitions/Vehicle'
+            
+    
+
+definitions:
+  Vehicle:
+    type: "object"
+    properties:
+      Status:
+        type: "object"
+        readOnly: true
+        properties:
+          location:
+            type: object
+            properties:
+              lat:
+                type: number
+              lon: 
+                type: number
+          ignition:
+            type: boolean
+          speed:
+            type: integer
+      _id:
+        type: "string"
+        readOnly: true
+      Vin:
+        type: "string"
+        readOnly: true
+      LicensePlate:
+        type: "string"
+      Driver:
+        type: "string"
+      MMY:
+        type: "string"
+        readOnly: true
+      customerName:
+        type: "string"
+      Office:
+        type: "string"
+  

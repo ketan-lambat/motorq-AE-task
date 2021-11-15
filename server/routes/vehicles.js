@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const { Vehicle } = require("../models/vehicle");
 
+// test api to create dummy data
 router.route("/create").post(async (req, res) => {
   for (let i = 11; i < 61; i++) {
     const vehicle = await Vehicle.create({
@@ -25,7 +26,7 @@ router.route("/create").post(async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  const queryCount = parseInt(req.query.count || "200");
+  const queryCount = parseInt(req.query.count || "500");
   const queryVin = req.query.vin || "";
   const queryDriver = req.query.driver || "";
   const queryLicensePlate = req.query.licensePlate || "";

@@ -7,18 +7,19 @@ export const Map = () => {
 
   React.useEffect(() => {
     (async () => {
-      const vehicles = await fetch("/api/vehicles")
+      const vehicles = await fetch("/api/vehicles?count=500")
         .then((res) => res.json())
         .then((data) => setData(data));
       console.debug(data, vehicles);
     })();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log(data);
 
   const ShowData = (props) => {
     if (props.data) {
+      // populate the markers array with location data
       let markers = [];
       for (let i = 0; i < props.data.length; i++) {
         markers.push(
@@ -28,6 +29,7 @@ export const Map = () => {
               props.data[i].Status.location.lon,
             ]}
           >
+            {/* Tool tip for on hover popup */}
             <Tooltip>
               <div className="card" style={{ width: "16rem" }}>
                 <div className="card-body">
@@ -49,7 +51,9 @@ export const Map = () => {
                         {props.data[i].Vin}
                       </h6>
                     </div>
-                    <div className="col card-subtitle mb-2 text-muted">{props.data[i].MMY}</div>
+                    <div className="col card-subtitle mb-2 text-muted">
+                      {props.data[i].MMY}
+                    </div>
                   </div>
                   <div className="row mx-1">
                     <div className="col-8">
@@ -88,7 +92,6 @@ export const Map = () => {
             center={[20.5937, 78.9629]}
             zoom={5}
             className="markercluster-map"
-            // scrollWheelZoom={false}
           >
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

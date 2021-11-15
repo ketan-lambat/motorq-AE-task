@@ -3,6 +3,7 @@ import { useLocation } from "react-router";
 import { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
+// componet for searching the vehicles using params
 export const SearchVehicle = () => {
   const switchParam = (event) => {
     const param = event.target.value;
@@ -64,6 +65,7 @@ export const SearchVehicle = () => {
   );
 };
 
+// component to get data for each vehicle
 export const Vehicle = (props) => {
   const [driver, setDriver] = useState(props.data.Driver);
   const [lp, setlp] = useState(props.data.LicensePlate);
@@ -71,6 +73,8 @@ export const Vehicle = (props) => {
 
   const editVehicle = (id) => {
     console.log("edit", id);
+    // for PATCH (edit) vehicle functionality
+    // driver Input, driver <p>
     const driverI = document.getElementById(id + "-driver");
     const driverP = document.getElementById(id + "-driver-p");
     const lpI = document.getElementById(id + "-lp");
@@ -160,6 +164,7 @@ export const Vehicle = (props) => {
   };
 
   const id = props.data._id;
+  // populate the vehicles data row
   return (
     <tr key={props.data._id}>
       <td>
@@ -225,6 +230,7 @@ export const Vehicle = (props) => {
   );
 };
 
+// component to display the vehicle table
 export const Vehicles = () => {
   const PAGE_NUMBER = 1;
   const [data, setData] = useState(null);
@@ -332,7 +338,6 @@ export const Vehicles = () => {
     <div className="my-2">
       <h3>Vehicle Data</h3>
       <SearchVehicle />
-
       <ShowData data={activeData} />
     </div>
   );
